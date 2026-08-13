@@ -10,11 +10,29 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # Candidate code runs only on the credentialless PHP check lane. The lane
+    # has no Docker socket, Kubernetes token, cloud identity, or private egress.
+    runs-on: fynex-plugin-woo-commerce-check-v2
     steps:
+      - name: Verify credentialless PHP lane
+        run: |
+          set -euo pipefail
+          php --version
+          python3 --version
+          if [ -f /var/run/secrets/kubernetes.io/serviceaccount/token ]; then
+            echo '::error::Kubernetes service-account token is mounted on the check lane'
+            exit 1
+          fi
+          if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
+            echo '::error::Docker daemon is reachable on the check lane'
+            exit 1
+          fi
+
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+        with:
+          persist-credentials: false
       - name: PHP syntax and webhook tests
-        run: ./bin/test-docker
+        run: ./bin/test
       - name: Build installable plugin zip
         run: ./bin/package
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
