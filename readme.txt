@@ -33,7 +33,7 @@ You need a Fynex seller account and an API key from the Fynex dashboard. Your st
 * [Hosted checkout guide](https://docs.fynex.ai/payments-api/v2/docs#tag/hosted-checkout): the API flow the plugin uses
 * [Webhooks guide](https://docs.fynex.ai/payments-api/v2/docs#tag/webhooks): signing, retries and delivery
 * [Captures & refunds](https://docs.fynex.ai/payments-api/v2/docs#tag/captures-refunds): how refunds are confirmed
-* [Going live](https://docs.fynex.ai/payments-api/v2/docs#tag/going-live): allowed return hosts and live keys
+* [Going live](https://docs.fynex.ai/payments-api/v2/docs#tag/going-live): the go-live checklist and live keys
 
 == External services ==
 
@@ -54,7 +54,7 @@ Fynex [Terms of Service](https://fynex.ai/legal/terms/) · [Privacy Policy](http
 2. Go to **WooCommerce → Settings → Payments → Fynex**.
 3. Paste your Fynex API key and save. The plugin registers your store's webhook address with Fynex and stores the signing secret it receives.
 4. Tick **Enable Fynex payments** and save.
-5. Before going live, add your store's domain to the allowed return hosts in Fynex, then replace the test key with a live key.
+5. To go live, replace the test key with a live key from the Fynex dashboard and save again.
 
 == Frequently Asked Questions ==
 

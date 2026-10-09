@@ -33,7 +33,8 @@ entered on Fynex and never touch the store.
    registers `https://your-store.example/wp-json/fynex/v1/webhook` and stores the signing
    secret Fynex returns.
 4. Enable Fynex and run a checkout with a test key (see [docs/TESTING.md](docs/TESTING.md)).
-5. Before going live, add the store's domain to the allowed return hosts in Fynex.
+5. To go live, replace the test key with a live key and save again. If Fynex has restricted your account's
+   return addresses, ask Fynex support to add the store's domain; by default any address is accepted.
 
 ## Documentation
 
@@ -41,7 +42,7 @@ entered on Fynex and never touch the store.
 - [Hosted checkout guide](https://docs.fynex.ai/payments-api/v2/docs#tag/hosted-checkout): the API flow the plugin uses
 - [Webhooks guide](https://docs.fynex.ai/payments-api/v2/docs#tag/webhooks): signing, retries and the 200 contract
 - [Captures & refunds](https://docs.fynex.ai/payments-api/v2/docs#tag/captures-refunds): how refunds are confirmed
-- [Going live](https://docs.fynex.ai/payments-api/v2/docs#tag/going-live): allowed return hosts and live keys
+- [Going live](https://docs.fynex.ai/payments-api/v2/docs#tag/going-live): the go-live checklist and live keys
 
 ## How a payment moves
 

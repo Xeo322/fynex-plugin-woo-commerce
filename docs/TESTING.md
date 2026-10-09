@@ -18,7 +18,6 @@ credentials are sent separately and are never stored in this repository.
    Expect "Fynex webhook registered and signing secret saved." and
    "Saved key: demo. No real money moves." under the key field.
 3. Tick **Enable Fynex payments**, tick **Debug log**, save.
-4. In Fynex, add the store's domain to the allowed return hosts.
 
 ## Happy path
 
