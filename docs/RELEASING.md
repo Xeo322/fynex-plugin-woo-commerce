@@ -24,11 +24,36 @@ intermediate build.
 - [ ] Plugin Check passes on the zip (`wp plugin check fynex-for-woocommerce`).
 - [ ] Manual pass of `docs/TESTING.md` against a Fynex test key.
 
+## WordPress.org
+
+**First submission (once).** The company's WordPress.org account uploads the zip at
+<https://wordpress.org/plugins/developers/add/>. The slug comes from the plugin name, so
+it will be `fynex-for-woocommerce`, which matches the text domain. Before uploading, put
+that account's username in `Contributors:` in `readme.txt` (it currently says `fynex`).
+Review takes from days to weeks; replies come by email to the account owner.
+
+**Every release after approval.** WordPress.org serves the plugin from SVN, not from Git:
+
+```sh
+./bin/package
+svn checkout https://plugins.svn.wordpress.org/fynex-for-woocommerce svn
+rm -rf svn/trunk/* && unzip -q dist/fynex-for-woocommerce.zip -d /tmp/ffw && cp -R /tmp/ffw/fynex-for-woocommerce/. svn/trunk/
+cp .wordpress-org/* svn/assets/          # icon, banner and screenshots for the directory page
+svn cp svn/trunk svn/tags/X.Y.Z
+cd svn && svn add --force . && svn commit -m "Release X.Y.Z"
+```
+
+The directory page shows the version named by `Stable tag` in `trunk/readme.txt`, so tag first and
+bump `Stable tag` in the same commit.
+
 ## QIT (Woo Marketplace)
 
+The Marketplace listing needs an approved Woo vendor account and, for a free payment gateway, a
+partnership agreement with Woo (see the readiness audit in fynex-website). Until both exist this
+section is preparation only.
+
 Woo runs QIT on every Marketplace submission and update; **activation, security and
-malware must pass** for a version to deploy. Until the Woo partner account exists
-this is a manual step:
+malware must pass** for a version to deploy. Once the vendor account exists:
 
 ```sh
 composer global require woocommerce/qit-cli
