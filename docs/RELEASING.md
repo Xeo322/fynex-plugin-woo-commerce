@@ -29,7 +29,10 @@ intermediate build.
 **First submission (once).** The company's WordPress.org account uploads the zip at
 <https://wordpress.org/plugins/developers/add/>. The slug comes from the plugin name, so
 it will be `fynex-for-woocommerce`, which matches the text domain. Before uploading, put
-that account's username in `Contributors:` in `readme.txt` (it currently says `fynex`).
+that account's username in `Contributors:` in `readme.txt`. It currently says `fynex`, which is
+a placeholder: a WordPress.org user named `fynex` already exists (joined January 2024) and it is
+not confirmed to be ours, so replace it before submitting. The slug `fynex-for-woocommerce` was
+still free on 2026-10-12.
 Review takes from days to weeks; replies come by email to the account owner.
 
 **Every release after approval.** WordPress.org serves the plugin from SVN, not from Git:
